@@ -1,0 +1,31 @@
+{
+  "name": "website",
+  "version": "0.0.1",
+  "description": "Our website.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "npx tsc",
+    "start": "node build/index.js"
+  },
+  "license": "GPL-2.0-only",
+  "author": "toolbisoftware",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toolbisoftware/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toolbisoftware/website/issues"
+  },
+  "homepage": "https://github.com/toolbisoftware/website#readme",
+  "devDependencies": {
+    "nodemon": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+}
