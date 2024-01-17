@@ -2,7 +2,7 @@
   "name": "website",
   "version": "0.0.1",
   "description": "Our website.",
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": ">=18"
   },
