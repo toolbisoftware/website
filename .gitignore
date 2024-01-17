@@ -5,6 +5,7 @@
 *.env
 
 # Folders
+/.next
 /build
 /logs
 /node_modules
