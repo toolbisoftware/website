@@ -3,10 +3,10 @@
 
 "use server";
 
-import { LANGUAGE_COOKIE, Locales } from "@/i18n/options";
+import { LANGUAGE_COOKIE } from "@/i18n/options";
 import { cookies } from "next/headers";
 
-export async function changeLocaleAction(value: Locales) {
+export async function changeLocaleAction(value: string) {
   cookies().set(LANGUAGE_COOKIE, value);
 
   return {
