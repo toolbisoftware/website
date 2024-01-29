@@ -5,6 +5,7 @@
 - ???
   - position
   - z-index
+  - color
   - width
   - height
   - min-width
@@ -12,3 +13,4 @@
   - max-width
   - max-height
   - background-color
+  - font-family
