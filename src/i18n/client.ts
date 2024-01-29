@@ -3,7 +3,8 @@
 
 "use client";
 
-import { useLocale } from "@/hooks/LocaleProvider";
+import { useLocale } from "@/hooks/useLocale";
+import { triggerLoadingScreen } from "@/utils/loadingScreen";
 import i18next, { i18n } from "i18next";
 import languageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
@@ -37,14 +38,9 @@ i18next
     lng: undefined
   });
 
-function translation(i18n: i18n, lang: Locales) {
-  useEffect(() => {
-    if (!lang || i18n.resolvedLanguage === lang) {
-      return;
-    }
-
-    i18n.changeLanguage(lang);
-  }, [lang, i18n]);
+function changeLanguage(i18n: i18n, lang: Locales) {
+  triggerLoadingScreen(100);
+  i18n.changeLanguage(lang);
 }
 
 export function useTranslation(ns: string) {
@@ -52,10 +48,20 @@ export function useTranslation(ns: string) {
   const translator = useT(ns);
   const { i18n } = translator;
 
+  useEffect(() => {
+    if (isServer && lang && i18n.resolvedLanguage !== lang) {
+      return;
+    } else {
+      if (!lang || i18n.resolvedLanguage === lang) {
+        return;
+      }
+
+      changeLanguage(i18n, lang);
+    }
+  }, [lang, i18n]);
+
   if (isServer && lang && i18n.resolvedLanguage !== lang) {
-    i18n.changeLanguage(lang);
-  } else {
-    translation(i18n, lang);
+    changeLanguage(i18n, lang);
   }
 
   return translator;
